@@ -1,0 +1,27 @@
+<svg
+  viewBox="0 0 203 58"
+  width="203"
+  height="58"
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="none"
+  aria-hidden="true"
+>
+  <defs>
+    <radialGradient
+      id="bannerGrad58"
+      gradientUnits="userSpaceOnUse"
+      cx="0"
+      cy="0"
+      r="10"
+      gradientTransform="matrix(-.0000015744 5.8 -20.3 -.0000028244 101.5 0)"
+    >
+      <stop stop-color="rgb(16,16,26)" offset="0.5" />
+      <stop stop-color="rgb(26,22,52)" offset="0.5625" />
+      <stop stop-color="rgb(37,28,79)" offset="0.625" />
+      <stop stop-color="rgb(57,40,132)" offset="0.75" />
+      <stop stop-color="rgb(78,52,184)" offset="0.875" />
+      <stop stop-color="rgb(98,64,237)" offset="1" />
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bannerGrad58)" />
+</svg>

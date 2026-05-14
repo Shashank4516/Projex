@@ -1,0 +1,50 @@
+/* Shared shimmer blocks — import alongside route-specific skeleton CSS */
+
+@keyframes skeleton-shimmer-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-block {
+  position: relative;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.skeleton-block::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.72) 45%,
+    transparent 90%
+  );
+  animation: skeleton-shimmer-slide 1.25s ease-in-out infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  .skeleton-block {
+    background: #334155;
+  }
+
+  .skeleton-block::after {
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.12) 45%,
+      transparent 90%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-block::after {
+    animation: none;
+  }
+}

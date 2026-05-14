@@ -1,0 +1,252 @@
+/* Card from Figma node 91:1198 (middle card frame 91:1450). */
+
+.pc-911198 {
+  position: relative;
+  width: 343px;
+  height: 338.724px;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: #f2f2f2;
+  border-radius: 8.551px;
+  overflow: hidden;
+  /* --card-scale is set on :root and changes at each breakpoint in App.css */
+  transform: scale(var(--card-scale, 1.3));
+  transform-origin: top left;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.pc-911198__bg {
+  position: absolute;
+  left: -20.9px;
+  top: -7.6px;
+  width: 374.83px;
+  height: 278.445px;
+  pointer-events: none;
+}
+
+.pc-911198__bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.pc-911198__avatar {
+  position: absolute;
+  left: 306.42px;
+  top: 11.88px;
+  width: 23.753px;
+  height: 23.753px;
+  border-radius: 999px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pc-911198__avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.pc-911198__preview {
+  position: absolute;
+  left: 18px;
+  top: 45.01px;
+  width: 296.78px;
+  height: 196.68px;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.pc-911198__preview-img {
+  position: absolute;
+  top: 0;
+  left: -0.1%;
+  width: 100%;
+  height: 107.31%;
+  display: block;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.pc-911198__content {
+  position: absolute;
+  left: 0;
+  top: 234.01px;
+  width: 343px;
+  height: 109.741px;
+  background: #fbfbfb;
+  box-sizing: border-box;
+}
+
+.pc-911198__title-row {
+  position: absolute;
+  left: 9.98px;
+  top: 13.03px; /* 247.04 - 234.01 */
+  right: 9.98px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.pc-911198__title {
+  margin: 0;
+  font-size: 10.452px;
+  line-height: 1.6;
+  font-weight: 700;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pc-911198__meta-icons {
+  display: inline-flex;
+  gap: 3.333px; /* matches figma 292 vs 308.67 spacing feel */
+  align-items: center;
+}
+
+.pc-911198__meta-ico {
+  width: 13.333px;
+  height: 13.333px;
+  display: block;
+}
+
+.pc-911198__tags {
+  position: absolute;
+  left: 10px;
+  top: 47px; /* ~281 - 234 */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.823px;
+  width: 220px;
+}
+
+.pc-911198__tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.823px 7.645px;
+  border-radius: 11.468px;
+  font-size: 6.69px;
+  line-height: 1.6;
+  color: #000;
+  border: 0.478px solid #000;
+  background: transparent;
+  white-space: nowrap;
+}
+
+/* Category-style tags — white pill, solid outline (see Figma 91:1198 tags). */
+.pc-911198__tag--category {
+  background: #ffffff;
+  border-style: solid;
+}
+
+.pc-911198__tag--dash {
+  border-style: dashed;
+}
+
+.pc-911198__tag--aqua {
+  background: #c5fffc;
+}
+
+.pc-911198__tag--yellow {
+  background: #fffac7;
+}
+
+.pc-911198__tag--green {
+  background: #dfffc7;
+}
+
+.pc-911198__cta {
+  position: absolute;
+  left: 252.26px;
+  top: 58.16px; /* 292.17 - 234.01 */
+  width: 78.103px;
+  height: 24px;
+  min-height: 0;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 29.197px;
+  background: #000;
+  text-decoration: none;
+  transform: scale(1.10);
+}
+
+.pc-911198__cta--disabled {
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.pc-911198__cta-label {
+  font-size: 5.11px;
+  line-height: normal;
+  font-weight: 700;
+  letter-spacing: 0.2044px;
+  color: #fff;
+}
+
+.pc-911198__cta-ico {
+  width: 14.45px;
+  height: 14.45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pc-911198__cta-ico img {
+  width: 10.219px;
+  height: 10.219px;
+  display: block;
+  margin-left: 12px;
+  transform: scale(1.4) rotate(-46deg);
+}
+
+/* ── Interactive meta buttons ────────────────────────────────────────────── */
+/* Reset browser button styles; match the original 13.333×13.333 icon size   */
+.pc-911198__meta-btn {
+  all: unset;
+  display: block;
+  width: 13.333px;
+  height: 13.333px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 3px;
+  position: relative;
+}
+
+.pc-911198__meta-btn:focus-visible {
+  outline: 1px solid rgba(0, 0, 0, 0.35);
+  outline-offset: 1px;
+}
+
+.pc-911198__meta-svg {
+  display: block;
+  width: 13.333px;
+  height: 13.333px;
+  transition: transform 0.12s ease;
+}
+
+/* Press feedback */
+.pc-911198__meta-btn:active .pc-911198__meta-svg {
+  transform: scale(0.82);
+}
+
+/* Liked / saved — subtle pop (fill is set on the SVG paths in JSX) */
+.pc-911198__meta-btn--lit .pc-911198__meta-svg,
+.pc-911198__meta-btn--saved .pc-911198__meta-svg {
+  transform: scale(1.05);
+}
+
+

@@ -1,0 +1,185 @@
+/* Figma 100:3145 — frame 99:3097 (174×69.44) */
+
+.banner-1003145 {
+  --r: 11.972px;
+  position: relative;
+  width: 174px;
+  height: 69.44px;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: var(--r);
+  overflow: hidden;
+  isolation: isolate;
+  /* Subtle rim like the dark UI (Figma) */
+  box-shadow:
+    0 0 0 0.4px rgba(255, 255, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  flex: 0 0 auto;
+}
+
+/* 99:3098: w 203, h 58, left -14, top 11, blur, rounded */
+.banner-1003145__layer--a,
+.banner-1003145__layer--b {
+  position: absolute;
+  left: -14px;
+  width: 203px;
+  border-radius: var(--r);
+  pointer-events: none;
+  filter: blur(0.798px);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.banner-1003145__layer--b {
+  top: 0;
+  height: 69px;
+  z-index: 0;
+  background-image: url('/figma/banner-203-69.svg');
+  background-position: 0 0;
+}
+
+/* Upper glow strip */
+.banner-1003145__layer--a {
+  top: 11px;
+  height: 58px;
+  z-index: 1;
+  background-image: url('/figma/banner-203-58.svg');
+  background-position: 0 0;
+}
+
+/* Figma: sparkle with mask (local SVGs) */
+.banner-1003145__sparkle {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.99px;
+  height: 3.99px;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.banner-1003145__sparkle-flip {
+  display: flex;
+  transform: scaleY(-1) rotate(180deg);
+  flex: none;
+}
+
+.banner-1003145__sparkle-clip {
+  position: relative;
+  overflow: hidden;
+  width: 3.991px;
+  height: 3.991px;
+}
+
+.banner-1003145__sparkle-m {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: url('/figma/banner-sparkle-mask.svg');
+  mask-image: url('/figma/banner-sparkle-mask.svg');
+  -webkit-mask-size: 3.991px 3.991px;
+  mask-size: 3.991px 3.991px;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+  mask-type: alpha;
+  -webkit-mask-clip: border-box;
+}
+
+.banner-1003145__sparkle-img {
+  position: absolute;
+  display: block;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* 99:3142 — text block */
+.banner-1003145__copy {
+  position: absolute;
+  z-index: 3;
+  left: calc(50% - 0.5px);
+  top: 19px;
+  width: 153px;
+  max-width: calc(100% - 12px);
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 12.771px;
+  line-height: 1.1;
+  color: #667085;
+  font-weight: 500;
+  font-family: 'Inter Tight', 'Inter', 'Manrope', system-ui, sans-serif;
+  text-wrap: pretty;
+  pointer-events: none;
+  white-space: pre-wrap;
+}
+
+.banner-1003145__a {
+  pointer-events: auto;
+  cursor: pointer;
+  color: #e5b2ca;
+  text-decoration: inherit;
+  text-decoration-skip-ink: none;
+  font: inherit;
+}
+
+.banner-1003145__l1 {
+  display: block;
+  font-size: 12.771px;
+  line-height: 19.156px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+  margin: 0 0 2px;
+  padding: 0 2px;
+}
+
+/* Second row: Figma = pink, underline, “compete” is link; fire semibold per file */
+.banner-1003145__line2 {
+  display: block;
+  font-size: 12.771px;
+  line-height: 19.156px;
+  color: #e5b2ca;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 0.1em;
+  font-weight: 500;
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+  margin: 0;
+  padding: 0 2px 2px;
+  max-width: 10rem;
+  margin-inline: auto;
+}
+
+.banner-1003145__a:hover {
+  color: #f0c9db;
+}
+
+.banner-1003145__fire {
+  font-weight: 600;
+  text-decoration: none;
+  text-decoration-skip-ink: none;
+}
+
+/* Fire emoji — Figma Manrope semibold in last span (approx.) */
+/* Responsive: scale in narrow rail */
+@media (max-width: 360px) {
+  .banner-1003145 {
+    width: 100%;
+    min-height: 69.44px;
+    height: auto;
+  }
+
+  .banner-1003145__copy {
+    width: calc(100% - 8px);
+    top: 18px;
+  }
+}

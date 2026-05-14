@@ -1,0 +1,55 @@
+@import './skeleton-base.css';
+
+.lb-table__row--skeleton {
+  pointer-events: none;
+}
+
+.lb-table__row--skeleton:hover {
+  background: transparent;
+}
+
+.lb-table-skeleton__rank {
+  width: 22px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.lb-table-skeleton__name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.lb-table-skeleton__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.lb-table-skeleton__name-bar {
+  flex: 1 1 auto;
+  height: 14px;
+  max-width: 160px;
+  border-radius: 4px;
+}
+
+.lb-table-skeleton__cell {
+  height: 14px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.lb-table-skeleton__aura {
+  height: 14px;
+  width: 36px;
+  border-radius: 4px;
+}
+
+.lb-table-skeleton__actions {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  margin-left: auto;
+}

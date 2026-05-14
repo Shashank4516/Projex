@@ -1,0 +1,94 @@
+/* Figma node 59:158 — sidebar profile card. Pixel-exact measures from get_design_context. */
+
+.spcard-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 15px;
+}
+
+.spcard-link:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+.spcard {
+  box-sizing: border-box;
+  width: 220px;
+  height: 60px;
+  border-radius: 15px;
+  border: 1px solid rgba(116, 116, 116, 0.1);
+  background: #ffffff;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  flex-shrink: 0;
+}
+
+.spcard__inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding: 0 11px;
+  box-sizing: border-box;
+}
+
+/* 38×38 outer shell, circular clip */
+.spcard__avatar-shell {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+}
+
+/* 30×30 image centred inside the 38×38 shell (matches Figma 4px inset all sides) */
+.spcard__avatar {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.spcard__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 137px;
+  min-width: 0;
+  line-height: normal;
+}
+
+.spcard__name {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11.435px;
+  font-weight: 600;
+  font-style: normal;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.spcard__sub {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11.435px;
+  font-weight: 400;
+  font-style: normal;
+  color: #878c90;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 119px;
+}

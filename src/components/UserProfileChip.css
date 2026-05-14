@@ -1,0 +1,89 @@
+/* Figma DevFlow — node 57:2897 (profile capsule). Exact measures from get_design_context. */
+
+.user-profile-chip {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7.624px;
+  padding: 4.765px 9.529px 4.765px 4.765px;
+  border-radius: 28.588px;
+  border: 0.953px solid #dadbdd;
+  background: #ffffff;
+  max-width: min(260px, 42vw);
+  min-width: 0;
+}
+
+.user-profile-chip--link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-profile-chip--link:hover {
+  border-color: #c4c8ce;
+}
+
+.user-profile-chip--link:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+.user-profile-chip__avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 33.353px;
+  height: 33.353px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-profile-chip__avatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-profile-chip__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  line-height: normal;
+}
+
+.user-profile-chip__name {
+  margin: 0;
+  padding: 0;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif;
+  font-size: 11.435px;
+  font-weight: 600;
+  font-style: normal;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  max-width: 176px;
+}
+
+.user-profile-chip__meta {
+  margin: 0;
+  padding: 0;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif;
+  font-size: 11.435px;
+  font-weight: 400;
+  font-style: normal;
+  color: #878c90;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  max-width: 176px;
+}

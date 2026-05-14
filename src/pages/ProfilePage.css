@@ -1,0 +1,272 @@
+.profile-page {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  /* Always match light Explore / main content — ignore system dark mode here */
+  color-scheme: light;
+  background: #f8fafc;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding-top: var(--nav-h);
+  scrollbar-width: thin;
+}
+
+.profile-page--simple {
+  padding: calc(var(--nav-h) + 24px) clamp(16px, 3vw, 28px) clamp(32px, 4vw, 48px);
+  background: #f8fafc;
+}
+
+@media (max-width: 767px) {
+  .profile-page {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .profile-page--simple {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px) + 24px);
+  }
+}
+
+.profile-page__shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px) clamp(40px, 5vw, 56px);
+}
+
+.profile-page__fallback-title {
+  margin: 0 0 10px;
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.profile-page__muted {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: #64748b;
+  line-height: 1.55;
+}
+
+.profile-page__muted a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.profile-page__muted a:hover {
+  text-decoration: underline;
+}
+
+/* —— Header (reference: large avatar, verified, handle, metrics, edit) —— */
+
+.profile-page__header {
+  position: relative;
+  margin-bottom: 8px;
+  padding-top: clamp(20px, 3vw, 32px);
+  /* overflow: hidden; */
+  border-radius: 0 0 16px 16px;
+}
+
+.profile-page__header-bg {
+  position: absolute;
+  inset: -24px -16px 0;
+  background-size: cover;
+  background-position: center top;
+  filter: blur(28px) saturate(1.15);
+  opacity: 0.35;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.profile-page__header-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, #ffffff 92%);
+}
+
+.profile-page__header-inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: clamp(16px, 3vw, 24px);
+  padding-bottom: clamp(12px, 2vw, 20px);
+}
+
+.profile-page__avatar-lg {
+  width: clamp(72px, 12vw, 88px);
+  height: clamp(72px, 12vw, 88px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+  flex-shrink: 0;
+}
+
+.profile-page__header-main {
+  flex: 1 1 200px;
+  min-width: 0;
+  padding-top: 4px;
+}
+
+.profile-page__name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.profile-page__display-name {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.profile-page__verified {
+  flex-shrink: 0;
+}
+
+.profile-page__handle {
+  margin: 4px 0 10px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+.profile-page__metrics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(12px, 3vw, 28px);
+}
+
+.profile-page__metric {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.profile-page__metric--aura {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-page__metric-flame {
+  flex-shrink: 0;
+}
+
+.profile-page__edit {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  flex-shrink: 0;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.profile-page__edit:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.profile-page__edit:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.profile-page__edit-icon {
+  display: block;
+}
+
+/* —— Tabs —— */
+
+.profile-page__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  border-bottom: 1px solid #e8ecf1;
+  margin-bottom: clamp(20px, 3vw, 28px);
+}
+
+.profile-page__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px 14px;
+  margin-bottom: -1px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.profile-page__tab:hover {
+  color: #334155;
+}
+
+.profile-page__tab--active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
+.profile-page__tab-icon {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.profile-page__tab--active .profile-page__tab-icon {
+  opacity: 1;
+}
+
+/* —— Project cards — same flex + slot sizing as Explore (App.css `.project-cards`) —— */
+
+.profile-page__project-cards.project-cards {
+  padding: 0;
+  margin: 0;
+}
+
+.profile-page__empty--full {
+  flex: 1 1 100%;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: none;
+}
+
+.profile-page__empty {
+  margin: 0;
+  padding: 20px 22px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  color: #64748b;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.profile-page__alert {
+  margin: 0 0 16px;
+  font-size: 0.875rem;
+  color: #b91c1c;
+}

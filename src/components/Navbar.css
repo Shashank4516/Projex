@@ -1,0 +1,438 @@
+/* Figma: node 106:443 — exact dimensions at ~1440px reference; fluid below. */
+
+@import './skeletons/skeleton-base.css';
+
+.navbar {
+  --nav-h: 85px;
+  --nav-border: #dadbdd;
+  --search-bg: #f3f4f4;
+  --search-text: #878c90;
+  --login-text-start: #363636;
+  --login-text-end: #676767;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  width: 100%;
+  min-height: var(--nav-h);
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--nav-border);
+  font-family:
+    'Inter',
+    system-ui,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+.navbar__logo-panel {
+  box-sizing: border-box;
+  flex: 0 0 clamp(200px, 21.25vw, 306px);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  height: var(--nav-h);
+  padding: 30px 20px;
+  border-right: 1px solid var(--nav-border);
+  overflow: hidden;
+}
+
+.navbar__logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+}
+
+/* Figma cluster ~116.7×25 — icon + word; slight flex gap ≈ 8px */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 25px;
+  flex: 1;
+  gap: 8.5px;
+}
+
+.navbar__logo-icon,
+.navbar__logo-word {
+  display: block;
+  width: auto;
+  height: 25px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.navbar__logo-word {
+  min-width: 0;
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+.navbar__collapse {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.navbar__collapse:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.navbar__collapse:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.navbar__collapse img {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+/* Frosted main strip — Figma: backdrop 6.6px, border #dadbdd, bg 10% white */
+.navbar__surface {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(12px, 2vw, 32px);
+  height: var(--nav-h);
+  padding-inline: clamp(12px, 1.6vw, 24px) clamp(12px, 2vw, 32px);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6.6px);
+  -webkit-backdrop-filter: blur(6.6px);
+  border-right: none;
+}
+
+.navbar__search-wrap {
+  flex: 0 1 309.706px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.navbar__search-inner {
+  display: flex;
+  align-items: center;
+  gap: 7.624px;
+  min-height: 10.482px;
+  box-sizing: border-box;
+  padding: 10.482px 12.388px 10.482px 17.153px;
+  background: var(--search-bg);
+  border-radius: 38.118px;
+  width: 100%;
+}
+
+.navbar__search-ico {
+  display: flex;
+  flex: 0 0 13.341px;
+  width: 13.341px;
+  height: 13.341px;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar__search-ico img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.navbar__search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-family: inherit;
+  font-size: 13.341px;
+  font-weight: 400;
+  line-height: normal;
+  color: #1e293b;
+  outline: none;
+}
+
+.navbar__search-input::placeholder {
+  color: var(--search-text);
+}
+
+.navbar__end {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 28px);
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+/* Outlined bell + plus — no backgrounds, black strokes (matches reference). */
+.navbar__icon-actions {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.navbar__icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  color: #0a0a0a;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Tight pair: a few px between the two stroke icons (ref image 2). */
+.navbar__icon-btn:first-of-type {
+  padding-right: 2px;
+}
+
+.navbar__icon-btn:last-of-type {
+  padding-left: 2px;
+}
+
+.navbar__icon-btn:hover {
+  /* background: rgba(0, 0, 0, 0.04); */
+}
+
+.navbar__icon-btn:focus-visible {
+  outline: 2px solid #0a0a0a;
+  outline-offset: 2px;
+}
+
+.navbar__icon-btn:active {
+  /* background: rgba(0, 0, 0, 0.07); */
+}
+
+.navbar__icon-svg {
+  display: block;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Figma: 125×39.23, radius 28.28, border, fill rgba(255,255,255,0.89), label gradient */
+.navbar__login {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 125px;
+  height: 39.234px;
+  padding: 0 20.073px;
+  border-radius: 28.285px;
+  border: 0.456px solid rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.89);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navbar__login:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.navbar__login:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.navbar__login-label {
+  font-size: 11.65px;
+  font-weight: 500;
+  line-height: 1.4;
+  font-family: inherit;
+  background: linear-gradient(
+    92.12deg,
+    var(--login-text-start) 5.09%,
+    var(--login-text-end) 94.91%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.navbar__account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.navbar-profile-skeleton {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7.624px;
+  padding: 4.765px 9.529px 4.765px 4.765px;
+  border-radius: 28.588px;
+  border: 0.953px solid #e8eaed;
+  background: #ffffff;
+  max-width: min(260px, 42vw);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.navbar-profile-skeleton__avatar {
+  flex-shrink: 0;
+  width: 33.353px;
+  height: 33.353px;
+  border-radius: 50%;
+}
+
+.navbar-profile-skeleton__text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.navbar-profile-skeleton__line {
+  display: block;
+  height: 9px;
+  border-radius: 4px;
+}
+
+.navbar-profile-skeleton__line--primary {
+  width: 92px;
+}
+
+.navbar-profile-skeleton__line--secondary {
+  width: 128px;
+}
+
+.navbar__sign-out {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 8px 4px;
+  border: none;
+  background: none;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #878c90;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.navbar__sign-out:hover {
+  color: #111827;
+  text-decoration: underline;
+}
+
+.navbar__sign-out:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Tablet: same icon size; end group can breathe */
+@media (max-width: 1024px) {
+  .navbar__end {
+    gap: clamp(12px, 2vw, 20px);
+  }
+}
+
+/* Small tablet / large phone: stack brand above toolbar */
+@media (max-width: 720px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar__logo-panel {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 68px;
+    min-height: 60px;
+    padding: 14px 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--nav-border);
+  }
+
+  .navbar__surface {
+    flex: 0 0 auto;
+    height: 87px;
+    min-height: 80px;
+    padding: 10px 14px 10px;
+    border-right: none;
+    gap: clamp(10px, 2vw, 20px);
+  }
+
+  .navbar__search-wrap {
+    flex: 1 1 auto;
+    min-width: 100px;
+    max-width: 280px;
+  }
+
+  .navbar__end {
+    flex: 0 0 auto;
+    gap: clamp(10px, 2vw, 20px);
+  }
+
+  .navbar__login {
+    min-width: min(110px, 36vw);
+  }
+}
+
+/* Phone: short label, compact */
+@media (max-width: 480px) {
+  .navbar__account {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px 10px;
+    max-width: 100%;
+  }
+
+  .navbar__logo-word {
+    max-width: 130px;
+  }
+
+  .navbar__login {
+    min-width: 0;
+    padding: 0 12px;
+  }
+
+  .navbar__login-label {
+    font-size: 10.5px;
+  }
+}
+
+/* Very narrow: keep single column without horizontal scroll */
+@media (max-width: 360px) {
+  .navbar__logo-icon {
+    height: 22px;
+  }
+
+  .navbar__logo-word {
+    max-width: 96px;
+  }
+}

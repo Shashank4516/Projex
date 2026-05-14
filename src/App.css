@@ -1,0 +1,516 @@
+:root {
+  --nav-h: 85px;
+  --card-scale: 1.3;
+}
+
+/* At ≤720px the navbar stacks to two rows (~155px tall) */
+@media (max-width: 720px) {
+  :root {
+    --nav-h: 155px;
+  }
+}
+
+/* Scale cards down on mid-size screens */
+@media (max-width: 1279px) {
+  :root { --card-scale: 1.15; }
+}
+@media (max-width: 1023px) {
+  :root { --card-scale: 1.0; }
+}
+/* On very small phones shrink further to fit the viewport */
+@media (max-width: 380px) {
+  :root { --card-scale: 0.88; }
+}
+
+.app {
+  position: relative;
+  height: 100svh;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Shell fills the entire viewport — navbar floats above it */
+.app__shell {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.app__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  background: #f8fafc;
+  box-sizing: border-box;
+  overflow-y: auto;
+  /* push initial content below the floating navbar */
+  padding-top: var(--nav-h);
+  scrollbar-width: thin;
+  scrollbar-color: #f8fafc #f8fafc;
+}
+
+/* Room for fixed mobile primary nav (see AppSidebar.css) */
+@media (max-width: 767px) {
+  .app__main {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.app__simple {
+  padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 28px);
+}
+
+.app__simple-title {
+  margin: 0 0 10px;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.app__simple-text {
+  margin: 0 0 20px;
+  font-size: 0.9375rem;
+  color: #64748b;
+  max-width: 42ch;
+  line-height: 1.55;
+}
+
+.app__simple-error {
+  margin: 0 0 20px;
+  font-size: 0.9375rem;
+  color: #b91c1c;
+  max-width: 42ch;
+  line-height: 1.55;
+}
+
+.app__simple-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #0f172a;
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.app__simple-btn:hover {
+  background: #1e293b;
+}
+
+.app__simple-btn:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+.settings-country-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-width: 320px;
+}
+
+.settings-country-form__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.settings-country-form__select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: #0f172a;
+}
+
+.settings-country-form__select:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 1px;
+}
+
+.app__main::-webkit-scrollbar {
+  width: 6px;
+}
+
+.app__main::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.app__main::-webkit-scrollbar-thumb {
+  background: #f8fafc;
+  border-radius: 99px;
+  transition: background 0.2s ease;
+}
+
+.app__main:hover::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+}
+
+.app__explore-header {
+  padding: clamp(20px, 3vw, 32px) clamp(16px, 3vw, 28px) 0;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.app__explore-title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.app__explore-count {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.app__empty-filter {
+  padding: clamp(40px, 8vw, 80px) clamp(16px, 3vw, 28px);
+  text-align: center;
+}
+
+.app__empty-filter-text {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  color: #475569;
+}
+
+.app__empty-filter-sub {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+.app__projects-status {
+  margin: 0;
+  padding: clamp(12px, 2vw, 20px) clamp(16px, 3vw, 28px) 0;
+  font-size: 0.9375rem;
+  color: #64748b;
+}
+
+.app__projects-status--error {
+  color: #b45309;
+}
+
+.app__inline-code {
+  font-size: 0.875em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* ── Mobile filter bar — horizontal chip strip, visible only on mobile ─────── */
+.mobile-filter {
+  display: none;
+  padding: 10px 0 2px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.mobile-filter__list {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0 16px 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-filter__list::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-filter__item {
+  flex: 0 0 auto;
+}
+
+.mobile-filter__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid #dadbdd;
+  border-radius: 99px;
+  background: #fff;
+  color: #6b7280;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.mobile-filter__btn--active {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #fff;
+}
+
+.mobile-filter__btn:not(.mobile-filter__btn--active):active {
+  background: #f1f5f9;
+}
+
+.mobile-filter__icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+.mobile-filter__icon--go {
+  height: 9px;
+}
+
+.mobile-filter__icon--all {
+  font-size: 11px;
+  color: inherit;
+}
+
+.mobile-filter__btn--active .mobile-filter__icon--all {
+  color: #fff;
+}
+
+.mobile-filter__label {
+  line-height: 1;
+}
+
+/* ── Project cards grid ─────────────────────────────────────────────────────── */
+.project-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 32px;
+  padding: clamp(14px, 2.5vw, 28px);
+  align-items: flex-start;
+}
+
+/* Slot dimensions driven by --card-scale, keeping the exact height ratio */
+.project-cards__slot {
+  flex: 0 0 auto;
+  width: calc(343px * var(--card-scale));
+  height: calc(338.724px * var(--card-scale) * 1.034);
+}
+
+/* ── Shell / app layout breakpoints ─────────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* Hide the sidebar — mobile uses the horizontal filter bar instead */
+  .app__shell {
+    flex-direction: column;
+  }
+
+  /* Show the mobile horizontal filter strip */
+  .mobile-filter {
+    display: block;
+  }
+
+  .project-cards {
+    gap: 18px;
+    padding: 12px 16px 32px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .project-cards {
+    padding: 10px 12px 24px;
+    gap: 14px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}

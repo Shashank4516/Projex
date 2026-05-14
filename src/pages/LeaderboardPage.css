@@ -1,0 +1,478 @@
+/* Figma node 101:3161 — General Leaderboard (DevFlow Task Manager). Poppins + exact palette. */
+
+.lb-page {
+  box-sizing: border-box;
+  min-height: 0;
+  flex: 1 1 auto;
+  padding: clamp(20px, 3vw, 32px) clamp(16px, 3vw, 28px) 40px;
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  background: #f8fafc;
+  color: #202020;
+}
+
+.lb-page__hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px 24px;
+  margin-bottom: 28px;
+}
+
+.lb-page__greeting {
+  margin: 0;
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  color: #202020;
+}
+
+.lb-page__me {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px 10px 12px;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #eceaee;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.lb-page__me-avatar {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.lb-page__me-divider {
+  width: 1px;
+  height: 28px;
+  background: #dcdbdd;
+  flex-shrink: 0;
+}
+
+.lb-page__me-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #202020;
+  white-space: nowrap;
+}
+
+.lb-page__me-aura {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  padding-left: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #84818a;
+}
+
+.lb-page__me-aura-icon {
+  flex-shrink: 0;
+}
+
+.lb-page__status,
+.lb-page__alert {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.lb-page__alert {
+  color: #b91c1c;
+}
+
+/* ── Card shell ─────────────────────────────────────────────────────── */
+
+.lb-card {
+  background: #fbfcfc;
+  border: 1px solid #e8e8ea;
+  border-radius: 12px;
+  padding: 22px 20px 8px;
+  box-sizing: border-box;
+}
+
+.lb-card__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 20px;
+}
+
+.lb-card__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 220px;
+  max-width: 340px;
+  min-width: 0;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid #dcdbdd;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.lb-card__search-ico {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.lb-card__search-svg {
+  display: block;
+}
+
+.lb-card__search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  color: #202020;
+  outline: none;
+}
+
+.lb-card__search-input::placeholder {
+  color: #84818a;
+}
+
+.lb-card__tabs {
+  display: inline-flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1px solid #dcdbdd;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.lb-card__tab {
+  margin: 0;
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  color: #47464a;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lb-card__tab:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.lb-card__tab--active {
+  font-weight: 500;
+  color: #202020;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #202020;
+}
+
+.lb-card__tab-line {
+  width: 1px;
+  background: #dcdbdd;
+  flex-shrink: 0;
+}
+
+.lb-card__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-top: 22px;
+  margin-bottom: 14px;
+}
+
+.lb-card__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #202020;
+}
+
+.lb-card__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: #84818a;
+}
+
+.lb-card__live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+  animation: lb-live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes lb-live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* ── Table ─────────────────────────────────────────────────────────── */
+
+.lb-table-wrap {
+  margin: 0 -6px 0;
+  padding-bottom: 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lb-table {
+  min-width: 860px;
+  box-sizing: border-box;
+}
+
+.lb-table__head {
+  display: grid;
+  grid-template-columns: 44px minmax(200px, 1.6fr) 110px 130px 150px 100px 44px;
+  align-items: center;
+  column-gap: 12px;
+  padding: 12px 16px;
+  background: #f4f7f7;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  color: #84818a;
+}
+
+.lb-table__head-actions {
+  width: 100%;
+}
+
+.lb-table__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.lb-table__row {
+  display: grid;
+  grid-template-columns: 44px minmax(200px, 1.6fr) 110px 130px 150px 100px 44px;
+  align-items: center;
+  column-gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #efefef;
+  font-size: 14px;
+  line-height: normal;
+  transition: background 0.12s ease;
+}
+
+.lb-table__row:last-child {
+  border-bottom: none;
+}
+
+.lb-table__row:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.lb-table__row--me {
+  background: rgba(99, 102, 241, 0.04);
+}
+
+.lb-table__empty {
+  padding: 48px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: #84818a;
+}
+
+.lb-table__cell {
+  min-width: 0;
+}
+
+.lb-table__cell--rank {
+  font-weight: 400;
+  color: #47464a;
+  text-align: left;
+}
+
+.lb-table__cell--name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  color: #202020;
+}
+
+.lb-table__cell--muted {
+  font-weight: 400;
+  color: #47464a;
+}
+
+.lb-table__cell--aura {
+  font-weight: 500;
+  color: #202020;
+}
+
+.lb-table__cell--with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lb-table__inline-ico {
+  flex-shrink: 0;
+}
+
+.lb-table__inline-ico--flame {
+  margin-right: -2px;
+}
+
+.lb-table__avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+}
+
+.lb-table__avatar {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.lb-table__medal {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.lb-table__medal--1 {
+  background: linear-gradient(145deg, #ffcd7f 0%, #e6a23c 100%);
+}
+
+.lb-table__medal--2 {
+  background: linear-gradient(145deg, #e8e4e0 0%, #bcb8b3 100%);
+  color: #3f3d3a;
+}
+
+.lb-table__medal--3 {
+  background: linear-gradient(145deg, #d79251 0%, #a86a2f 100%);
+}
+
+.lb-table__name-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lb-table__cell--actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.lb-table__follow {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0f172a;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.lb-table__follow:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.lb-table__follow:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.lb-table__follow:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+.lb-table__more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.lb-table__more:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.lb-table__more:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+.lb-table__more-svg {
+  display: block;
+}
+
+@media (max-width: 1023px) {
+  .lb-page__hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lb-page__me {
+    align-self: flex-start;
+  }
+}

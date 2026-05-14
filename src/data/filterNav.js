@@ -1,0 +1,16 @@
+export const FILTER_NAV = [
+  { id: 'all',       label: 'All Projects', src: null },
+  { id: 'js',        label: 'Javascript',   src: '/figma/dashboard-icons/js.png' },
+  { id: 'react',     label: 'React',        src: '/figma/dashboard-icons/react.png' },
+  { id: 'next',      label: 'Next.js',      src: '/figma/dashboard-icons/next.png' },
+  { id: 'css',       label: 'CSS',          src: '/figma/dashboard-icons/css.png' },
+  { id: 'tw',        label: 'Tailwind CSS', src: '/figma/dashboard-icons/tailwind.png' },
+  { id: 'bootstrap', label: 'Bootstrap',    src: '/figma/dashboard-icons/bootstrap.png' },
+  { id: 'express',   label: 'Express.Js',   src: '/figma/dashboard-icons/express.png' },
+  { id: 'angular',   label: 'Angular',      src: '/figma/dashboard-icons/angular.png' },
+  { id: 'node',      label: 'Node.Js',      src: '/figma/dashboard-icons/node.png' },
+  { id: 'vue',       label: 'Vue.js',       src: '/figma/dashboard-icons/vue.png' },
+  { id: 'python',    label: 'Python',       src: '/figma/dashboard-icons/python.png' },
+  { id: 'java',      label: 'Java',         src: '/figma/dashboard-icons/java.png' },
+  { id: 'go',        label: 'Go',           src: '/figma/dashboard-icons/go.png', go: true },
+]

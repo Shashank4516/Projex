@@ -1,0 +1,311 @@
+/* Figma 108:444 — Dashboard sidebar. Aligns 306px with Navbar logo column. */
+
+.dashboard {
+  --dash-w: 306px;
+  --item-w: 210px;
+  --row-gap: 8px; /* 45px row step - 8+8+~21 item body */
+  --label: #878c90;
+  --active-bg: #f5f5f5;
+  --line: #dadbdd;
+
+  box-sizing: border-box;
+  flex: 0 0 var(--dash-w);
+  width: var(--dash-w);
+  max-width: 100%;
+  min-height: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-right: 1px solid var(--line);
+  overflow: hidden;
+  /* push sidebar content below the floating navbar */
+  padding-top: var(--nav-h, 85px);
+}
+
+.dashboard__inner {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0 20px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Upper block grows; framework list scrolls inside it */
+.dashboard__top {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Figma 59:158 — profile card slot: left=25px, top gap matches Figma top:98px within sidebar */
+.dashboard__profile-slot {
+  box-sizing: border-box;
+  margin: 8px 0 14px 25px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  /* Card is 220px wide; slot is transparent — card owns its own sizing */
+}
+
+
+/* Nav list: Figma pad left 28, 210px rows, 10px icon-text gap, 8px row gap */
+.dashboard__nav {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 0 0 0 28px;
+  scrollbar-width: thin;
+  scrollbar-color: #fff #fff;
+}
+
+.dashboard__nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dashboard__nav::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.dashboard__nav::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 99px;
+}
+
+.dashboard__nav:hover::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+}
+
+.dashboard__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--row-gap);
+  width: 100%;
+  max-width: 238px;
+}
+
+.dashboard__li {
+  width: 100%;
+  max-width: var(--item-w);
+  flex: 0 0 auto;
+}
+
+.dashboard__item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 37px;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: var(--label);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dashboard__item:hover:not(.dashboard__item--active) {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Figma: React / selected #f5f5f5, radius 11.07 */
+.dashboard__item--active {
+  background: var(--active-bg);
+  border-radius: 11.07px;
+  box-shadow: none;
+}
+
+.dashboard__item:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+.dashboard__item-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 21px;
+  width: 21px;
+  height: 21px;
+}
+
+/* Figma: 21×21 icon (except Go) */
+.dashboard__item-icon {
+  display: block;
+  width: 21px;
+  height: 21px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Figma Go icon 21×11 */
+.dashboard__item-icon--go {
+  width: 21px;
+  height: 11px;
+  object-fit: cover;
+}
+
+/* "All Projects" text icon */
+.dashboard__item-icon--all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  font-size: 14px;
+  color: #6366f1;
+  object-fit: unset;
+}
+
+/* Figma: 16px / regular */
+.dashboard__item-label {
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 400;
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dashboard__item-count {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 500;
+  color: #94a3b8;
+  background: #f1f5f9;
+  border-radius: 99px;
+  padding: 1px 7px;
+  min-width: 20px;
+  text-align: center;
+  line-height: 18px;
+}
+
+.dashboard__item--active .dashboard__item-count {
+  background: #e0e7ff;
+  color: #6366f1;
+}
+
+.dashboard__item--active .dashboard__item-label {
+  color: #0f172a;
+  font-weight: 500;
+}
+
+/* ── Bottom: Leaderboard + Logout (pinned to sidebar bottom) ───────── */
+
+.dashboard__footer {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  padding: 20px 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.dashboard__footer-link,
+.dashboard__footer-btn {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: var(--item-w);
+  min-height: 40px;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 11px;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--label);
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dashboard__footer-link:hover,
+.dashboard__footer-btn:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* .dashboard__footer-link--active {
+  background: var(--active-bg);
+  border-radius: 11.07px;
+} */
+
+.dashboard__footer-link:focus-visible,
+.dashboard__footer-btn:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+.dashboard__footer-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 21px;
+  width: 21px;
+  height: 21px;
+  color: inherit;
+}
+
+.dashboard__footer-icon--emoji {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.dashboard__footer-svg {
+  display: block;
+}
+
+.dashboard__footer-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --- Responsive breakpoints ─────────────────────────────────────────── */
+
+/* Tablet: slightly narrower sidebar */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .dashboard {
+    --dash-w: 240px;
+  }
+
+  .dashboard__item-label {
+    font-size: 14px;
+  }
+
+  .dashboard__footer-link,
+  .dashboard__footer-btn {
+    font-size: 14px;
+  }
+}
+
+/* Mobile: hidden — horizontal filter strip takes over (see App.css .mobile-filter) */
+@media (max-width: 767px) {
+  .dashboard {
+    display: none;
+  }
+}
