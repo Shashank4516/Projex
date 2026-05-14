@@ -20,6 +20,8 @@ RUN test -f package.json || (\
 
 RUN npm ci
 ENV NODE_ENV=production
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
 RUN npm run build
 
 FROM node:22-bookworm-slim AS runner

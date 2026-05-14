@@ -3,3 +3,4 @@
 
 [build]
 dockerfilePath = "Dockerfile"
+buildArgs = ["VITE_API_URL"]
