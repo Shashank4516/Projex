@@ -1,3 +1,5 @@
+import { LEADERBOARD_ICON_SRC } from '../data/appNav'
+
 /** Shared SVG icons for primary app routes (dashboard + mobile bar). */
 export function MainNavIcon({ name, className }) {
   const cn = ['main-nav-icon__svg', className].filter(Boolean).join(' ')
@@ -27,23 +29,16 @@ export function MainNavIcon({ name, className }) {
           />
         </svg>
       )
-    case 'trophy':
+    case 'leaderboard':
       return (
-        <svg className={cn} viewBox="0 0 24 24" width={22} height={22} fill="none" aria-hidden>
-          <path
-            d="M8 21h8M12 17v4M7 4h10v3a5 5 0 0 1-10 0V4Z"
-            stroke="currentColor"
-            strokeWidth="1.25"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M7 7H5a1.5 1.5 0 0 0 1.5 1.5h0M17 7h2a1.5 1.5 0 0 1-1.5 1.5h0"
-            stroke="currentColor"
-            strokeWidth="1.25"
-            strokeLinecap="round"
-          />
-        </svg>
+        <img
+          className={['main-nav-icon__img', className].filter(Boolean).join(' ')}
+          src={LEADERBOARD_ICON_SRC}
+          alt=""
+          width={22}
+          height={22}
+          draggable={false}
+        />
       )
     case 'user':
       return (

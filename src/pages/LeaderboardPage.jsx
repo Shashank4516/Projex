@@ -7,6 +7,7 @@ import { followUser, unfollowUser } from '../services/followersFirestore'
 import { totalAuraForUser } from '../utils/aura'
 import { buildLeaderboardRows } from '../utils/leaderboard'
 import { LeaderboardTableSkeleton } from '../components/skeletons/LeaderboardTableSkeleton'
+import { LEADERBOARD_ICON_SRC } from '../data/appNav'
 import './LeaderboardPage.css'
 
 const POLL_MS = 2500
@@ -245,6 +246,14 @@ export function LeaderboardPage() {
 
         <div className="lb-card__title-row">
           <h2 className="lb-card__title" data-node-id="101:4431">
+            <img
+              className="lb-card__title-icon"
+              src={LEADERBOARD_ICON_SRC}
+              alt=""
+              width={24}
+              height={24}
+              draggable={false}
+            />
             General Leaderboard
           </h2>
           <p className="lb-card__live" role="status">

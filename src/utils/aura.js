@@ -34,3 +34,22 @@ export function isProjectOwnedByUser(project, user) {
   if (photo && project?.ownerPhotoURL === photo) return true
   return false
 }
+
+/**
+ * Projects attributed to a member (by Firebase uid and/or public photo URL).
+ *
+ * @param {unknown[]} projects
+ * @param {{ uid?: string | null, photoURL?: string | null }} owner
+ */
+export function filterProjectsByOwner(projects, owner) {
+  const list = Array.isArray(projects) ? projects : []
+  const uid = typeof owner?.uid === 'string' ? owner.uid.trim() : ''
+  const photo =
+    typeof owner?.photoURL === 'string' && owner.photoURL ? owner.photoURL : ''
+  return list.filter((p) => {
+    const pUid = typeof p?.ownerUid === 'string' ? p.ownerUid.trim() : ''
+    if (uid && pUid && pUid === uid) return true
+    if (photo && p?.ownerPhotoURL === photo) return true
+    return false
+  })
+}

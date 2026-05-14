@@ -1,3 +1,5 @@
+@import '../components/skeletons/skeleton-base.css';
+
 .profile-page {
   flex: 1 1 auto;
   min-width: 0;
@@ -160,6 +162,51 @@
   flex-shrink: 0;
 }
 
+.profile-page__metrics--skeleton {
+  gap: clamp(12px, 3vw, 28px);
+}
+
+.profile-page__metric-skel {
+  display: inline-block;
+  height: 15px;
+  border-radius: 6px;
+}
+
+.profile-page__metric-skel--followers {
+  width: clamp(100px, 18vw, 140px);
+}
+
+.profile-page__metric-skel--aura {
+  width: clamp(72px, 14vw, 100px);
+}
+
+.profile-page__tabs-skeleton {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-bottom: 14px;
+  margin-bottom: clamp(20px, 3vw, 28px);
+  border-bottom: 1px solid #e8ecf1;
+  pointer-events: none;
+}
+
+.profile-page__tab-skel {
+  height: 38px;
+  border-radius: 8px;
+}
+
+.profile-page__tab-skel:nth-child(1) {
+  width: 88px;
+}
+
+.profile-page__tab-skel:nth-child(2) {
+  width: 118px;
+}
+
+.profile-page__tab-skel:nth-child(3) {
+  width: 112px;
+}
+
 .profile-page__edit {
   margin-left: auto;
   display: flex;
@@ -269,4 +316,94 @@
   margin: 0 0 16px;
   font-size: 0.875rem;
   color: #b91c1c;
+}
+
+/* —— Public profile / search targets —— */
+
+.profile-page__back-hint {
+  margin: 0 0 12px;
+  font-size: 0.875rem;
+}
+
+.profile-page__back-hint a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.profile-page__back-hint a:hover {
+  text-decoration: underline;
+}
+
+.profile-page__public-sub {
+  margin: 0 0 10px;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.profile-page__header-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.profile-page__follow-user {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.profile-page__follow-user:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.profile-page__follow-user:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+.profile-page__follow-user:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.profile-page__header-inner--loading {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: clamp(16px, 3vw, 24px);
+  padding-bottom: clamp(12px, 2vw, 20px);
+}
+
+.profile-page__avatar-skeleton {
+  width: clamp(72px, 12vw, 88px);
+  height: clamp(72px, 12vw, 88px);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.profile-page__title-skeleton {
+  height: 22px;
+  width: min(200px, 50vw);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.profile-page__handle-skeleton {
+  height: 14px;
+  width: min(140px, 40vw);
+  border-radius: 6px;
 }

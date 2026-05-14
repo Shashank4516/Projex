@@ -4,6 +4,7 @@ import { SidebarProfileCard } from './SidebarProfileCard'
 import { useProjects } from '../context/ProjectsContext'
 import { auth } from '../firebase'
 import { FILTER_NAV } from '../data/filterNav'
+import { LEADERBOARD_ICON_SRC } from '../data/appNav'
 import './Dashboard.css'
 
 function LogoutIcon({ className }) {
@@ -156,8 +157,15 @@ export function Dashboard() {
                 .join(' ')
             }
           >
-            <span className="dashboard__footer-icon dashboard__footer-icon--emoji" aria-hidden>
-              🔥
+            <span className="dashboard__footer-icon" aria-hidden>
+              <img
+                className="dashboard__footer-leaderboard-icon"
+                src={LEADERBOARD_ICON_SRC}
+                alt=""
+                width={21}
+                height={21}
+                draggable={false}
+              />
             </span>
             <span className="dashboard__footer-label">Leaderboard</span>
           </NavLink>

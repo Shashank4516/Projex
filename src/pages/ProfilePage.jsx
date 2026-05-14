@@ -215,7 +215,12 @@ export function ProfilePage() {
   }
 
   return (
-    <main className="profile-page" id="app-main" aria-label="Your profile">
+    <main
+      className="profile-page"
+      id="app-main"
+      aria-label="Your profile"
+      aria-busy={showProjectsSkeleton}
+    >
       <div className="profile-page__shell">
         <header className="profile-page__header">
           <div
@@ -238,13 +243,26 @@ export function ProfilePage() {
                 <IconVerified className="profile-page__verified" aria-hidden />
               </div>
               <p className="profile-page__handle">{handle}</p>
-              <div className="profile-page__metrics">
-                <span className="profile-page__metric">{followerLabel}</span>
-                <span className="profile-page__metric profile-page__metric--aura" title="Total likes on your projects">
-                  <IconFlame className="profile-page__metric-flame" />
-                  {auraLabel}
-                </span>
-              </div>
+              {showProjectsSkeleton ? (
+                <div
+                  className="profile-page__metrics profile-page__metrics--skeleton"
+                  aria-hidden
+                >
+                  <span className="profile-page__metric-skel profile-page__metric-skel--followers skeleton-block" />
+                  <span className="profile-page__metric-skel profile-page__metric-skel--aura skeleton-block" />
+                </div>
+              ) : (
+                <div className="profile-page__metrics">
+                  <span className="profile-page__metric">{followerLabel}</span>
+                  <span
+                    className="profile-page__metric profile-page__metric--aura"
+                    title="Total likes on your projects"
+                  >
+                    <IconFlame className="profile-page__metric-flame" />
+                    {auraLabel}
+                  </span>
+                </div>
+              )}
             </div>
             <Link
               to="/settings"
@@ -256,35 +274,43 @@ export function ProfilePage() {
           </div>
         </header>
 
-        <div
-          className="profile-page__tabs"
-          role="tablist"
-          aria-label="Profile content"
-        >
-          {TABS.map(({ id, label, Icon }) => {
-            const selected = activeTab === id
-            return (
-              <button
-                key={id}
-                type="button"
-                role="tab"
-                id={`profile-tab-${id}`}
-                aria-selected={selected}
-                aria-controls="profile-tab-panel"
-                className={[
-                  'profile-page__tab',
-                  selected ? 'profile-page__tab--active' : '',
-                ]
-                  .filter(Boolean)
-                  .join(' ')}
-                onClick={() => setActiveTab(id)}
-              >
-                <Icon className="profile-page__tab-icon" />
-                <span>{label}</span>
-              </button>
-            )
-          })}
-        </div>
+        {showProjectsSkeleton ? (
+          <div className="profile-page__tabs-skeleton" aria-hidden>
+            <span className="profile-page__tab-skel skeleton-block" />
+            <span className="profile-page__tab-skel skeleton-block" />
+            <span className="profile-page__tab-skel skeleton-block" />
+          </div>
+        ) : (
+          <div
+            className="profile-page__tabs"
+            role="tablist"
+            aria-label="Profile content"
+          >
+            {TABS.map(({ id, label, Icon }) => {
+              const selected = activeTab === id
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  role="tab"
+                  id={`profile-tab-${id}`}
+                  aria-selected={selected}
+                  aria-controls="profile-tab-panel"
+                  className={[
+                    'profile-page__tab',
+                    selected ? 'profile-page__tab--active' : '',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                  onClick={() => setActiveTab(id)}
+                >
+                  <Icon className="profile-page__tab-icon" />
+                  <span>{label}</span>
+                </button>
+              )
+            })}
+          </div>
+        )}
 
         {projectsError ? (
           <p className="profile-page__alert" role="alert">
@@ -296,7 +322,11 @@ export function ProfilePage() {
         <div
           id="profile-tab-panel"
           role="tabpanel"
-          aria-labelledby={`profile-tab-${activeTab}`}
+          {...(showProjectsSkeleton
+            ? { 'aria-label': 'Loading projects' }
+            : {
+                'aria-labelledby': `profile-tab-${activeTab}`,
+              })}
         >
           {showProjectsSkeleton ? (
             <ProjectCardsSkeletonGrid count={6} className="profile-page__project-cards" />

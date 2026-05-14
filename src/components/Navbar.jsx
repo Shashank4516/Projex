@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
+import { useNotifications } from '../hooks/useNotifications'
 import { useAuth } from '../context/AuthContext'
 import { useProjects } from '../context/ProjectsContext'
 import { UserProfileChip } from './UserProfileChip'
+import { NavbarUserSearch } from './NavbarUserSearch'
 import './Navbar.css'
 
 /**
  * DevFlow / Everplan navbar — built from Figma node 106:443 (Figma MCP get_design_context).
  * Asset URLs are time-limited Figma exports; replace with local /public assets for production.
  */
-const imgSearchSm = '/figma/navbar/search.svg'
 const imgIcon = '/figma/navbar/mark.svg'
 const imgEverplan = '/figma/navbar/wordmark.svg'
 const imgChevronLeftDouble = '/figma/navbar/chevrons.svg'
@@ -16,6 +17,7 @@ const imgChevronLeftDouble = '/figma/navbar/chevrons.svg'
 export function Navbar() {
   const { setModalOpen } = useProjects()
   const { user, profile, loading } = useAuth()
+  const { unreadCount } = useNotifications()
 
   return (
     <header className="navbar" data-node-id="106:443" data-name="Navbar">
@@ -54,31 +56,28 @@ export function Navbar() {
       </div>
 
       <div className="navbar__surface" data-name="Navigation Bar">
-        <div className="navbar__search-wrap" data-name="Search Bar">
-          <div className="navbar__search-inner">
-            <span className="navbar__search-ico" data-name="search-sm">
-              <img src={imgSearchSm} alt="" width={14} height={14} />
-            </span>
-            <input
-              type="search"
-              className="navbar__search-input"
-              placeholder="Search"
-              name="q"
-              autoComplete="off"
-              aria-label="Search"
-            />
-          </div>
-        </div>
+        <NavbarUserSearch />
 
         <div className="navbar__end">
           <div className="navbar__icon-actions" data-name="Menu Bar" role="toolbar">
-            <button
-              type="button"
-              className="navbar__icon-btn"
-              aria-label="Notifications"
+            <Link
+              className="navbar__icon-btn navbar__icon-btn--bell"
+              to="/notifications"
+              aria-label={
+                unreadCount > 0
+                  ? `Notifications, ${unreadCount} unread`
+                  : 'Notifications'
+              }
             >
-              <IconBell className="navbar__icon-svg" />
-            </button>
+              <span className="navbar__bell-wrap">
+                <IconBell className="navbar__icon-svg" />
+                {user && unreadCount > 0 ? (
+                  <span className="navbar__notif-badge">
+                    {unreadCount > 99 ? '99+' : unreadCount}
+                  </span>
+                ) : null}
+              </span>
+            </Link>
             <button
               type="button"
               className="navbar__icon-btn"

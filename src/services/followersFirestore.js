@@ -7,6 +7,7 @@ import {
   setDoc,
 } from 'firebase/firestore'
 import { db } from '../firebase'
+import { deleteFollowNotification, upsertFollowNotification } from './notificationsFirestore'
 
 /**
  * @param {string} targetUid User who receives the follower
@@ -51,6 +52,7 @@ export async function followUser(me, targetUid) {
     photoURL: me.photoURL ?? '',
     createdAt: serverTimestamp(),
   })
+  await upsertFollowNotification(targetUid, me)
 }
 
 /**
@@ -60,4 +62,5 @@ export async function followUser(me, targetUid) {
 export async function unfollowUser(followerUid, targetUid) {
   if (!db || !followerUid || !targetUid || followerUid === targetUid) return
   await deleteDoc(doc(db, 'users', targetUid, 'followers', followerUid))
+  await deleteFollowNotification(targetUid, followerUid)
 }

@@ -273,6 +273,13 @@
   line-height: 1;
 }
 
+.dashboard__footer-leaderboard-icon {
+  display: block;
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+}
+
 .dashboard__footer-svg {
   display: block;
 }

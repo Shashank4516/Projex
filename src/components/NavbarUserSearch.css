@@ -1,0 +1,126 @@
+.navbar-user-search {
+  position: relative;
+}
+
+.navbar-user-search__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.navbar-user-search__dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  min-width: min(100vw - 32px, 320px);
+  max-height: min(60vh, 320px);
+  overflow-y: auto;
+  padding: 8px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #e8ecf1;
+  box-shadow:
+    0 10px 40px rgba(15, 23, 42, 0.12),
+    0 2px 8px rgba(15, 23, 42, 0.06);
+  z-index: 200;
+  box-sizing: border-box;
+}
+
+.navbar-user-search__hint,
+.navbar-user-search__status,
+.navbar-user-search__empty {
+  margin: 0;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #64748b;
+}
+
+.navbar-user-search__hint {
+  color: #475569;
+}
+
+.navbar-user-search__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  margin: 0;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.navbar-user-search__row:hover {
+  background: #f8fafc;
+}
+
+.navbar-user-search__row:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: -2px;
+}
+
+.navbar-user-search__avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-user-search__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.navbar-user-search__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar-user-search__email {
+  font-size: 11px;
+  color: #94a3b8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (prefers-color-scheme: dark) {
+  .navbar-user-search__dropdown {
+    background: #f9fafc;
+    /* border-color: #2e303a; */
+    /* box-shadow:
+      0 12px 48px rgba(0, 0, 0, 0.45),
+      0 2px 8px rgba(0, 0, 0, 0.25); */
+  }
+
+  .navbar-user-search__row:hover {
+    background: #eeeeee;
+  }
+
+  .navbar-user-search__name {
+    color: #181818;
+  }
+
+  .navbar-user-search__email {
+    color: #64748b;
+  }
+
+  .navbar-user-search__hint,
+  .navbar-user-search__status,
+  .navbar-user-search__empty {
+    color: #94a3b8;
+  }
+}

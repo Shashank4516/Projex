@@ -9,11 +9,14 @@ import {
   useProjects,
 } from './context/ProjectsContext'
 import { AuthProvider } from './context/AuthContext'
+import { NotificationsProvider } from './context/NotificationsProvider'
 import { LoginPage } from './pages/LoginPage'
 import { LeaderboardPage } from './pages/LeaderboardPage'
 import { SignupPage } from './pages/SignupPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { ProfilePage } from './pages/ProfilePage'
+import { PublicProfilePage } from './pages/PublicProfilePage'
+import { NotificationsPage } from './pages/NotificationsPage'
 import { ProjectCardsSkeletonGrid } from './components/skeletons/ProjectCardsSkeletonGrid'
 import { FILTER_NAV } from './data/filterNav'
 import './App.css'
@@ -133,15 +136,6 @@ function UploadPage() {
   )
 }
 
-function SimpleAppPage({ title, description }) {
-  return (
-    <main className="app__main app__simple" id="app-main">
-      <h1 className="app__simple-title">{title}</h1>
-      {description ? <p className="app__simple-text">{description}</p> : null}
-    </main>
-  )
-}
-
 export default function App() {
   return (
     <AuthProvider>
@@ -152,7 +146,9 @@ export default function App() {
           path="/"
           element={
             <ProjectsProvider>
-              <AppLayout />
+              <NotificationsProvider>
+                <AppLayout />
+              </NotificationsProvider>
             </ProjectsProvider>
           }
         >
@@ -160,15 +156,8 @@ export default function App() {
           <Route path="upload" element={<UploadPage />} />
           <Route path="leaderboard" element={<LeaderboardPage />} />
           <Route path="profile" element={<ProfilePage />} />
-          <Route
-            path="notifications"
-            element={(
-              <SimpleAppPage
-                title="Notifications"
-                description="You have no new notifications."
-              />
-            )}
-          />
+          <Route path="user/:uid" element={<PublicProfilePage />} />
+          <Route path="notifications" element={<NotificationsPage />} />
           <Route path="settings" element={<SettingsPage />} />
         </Route>
       </Routes>

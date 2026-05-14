@@ -201,11 +201,21 @@
 }
 
 .lb-card__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   margin: 0;
   font-size: 18px;
   font-weight: 500;
   line-height: 26px;
   color: #202020;
+}
+
+.lb-card__title-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .lb-card__live {

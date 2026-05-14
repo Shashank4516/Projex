@@ -1,4 +1,7 @@
 rules_version = '2';
+// Copy into Firebase Console → Firestore → Rules (or use Firebase CLI deploy).
+// Enables navbar user search (reads user docs) and follower subcollections.
+
 service cloud.firestore {
   match /databases/{database}/documents {
     match /users/{userId} {
@@ -10,7 +13,6 @@ service cloud.firestore {
         allow write: if request.auth != null && request.auth.uid == followerId;
       }
 
-      // Follow alerts: doc id = follower's uid; recipient reads / marks read; follower creates on follow.
       match /notifications/{notificationId} {
         allow read: if request.auth != null && request.auth.uid == userId;
         allow create, update: if request.auth != null

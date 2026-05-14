@@ -15,7 +15,11 @@
 
 .user-profile-chip--link {
   text-decoration: none;
-  color: inherit;
+  color: #0f172a;
+}
+
+.user-profile-chip--link:visited {
+  color: #0f172a;
 }
 
 .user-profile-chip--link:hover {
@@ -62,7 +66,8 @@
   font-size: 11.435px;
   font-weight: 600;
   font-style: normal;
-  color: #000000;
+  color: #0f172a;
+  -webkit-text-fill-color: #0f172a;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
