@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { apiUrl } from '../lib/apiBase'
 import { useProjects } from '../context/ProjectsContext'
 import './ProjectCard911198.css'
 
@@ -32,7 +33,9 @@ function useLazyBanner(id, fallback) {
           setSrc(bannerCache.get(id))
           return
         }
-        fetch(`/api/projects/item/${encodeURIComponent(id)}`, { cache: 'force-cache' })
+        fetch(apiUrl(`/api/projects/item/${encodeURIComponent(id)}`), {
+          cache: 'force-cache',
+        })
           .then((r) => (r.ok ? r.json() : null))
           .then((data) => {
             const url = data?.bannerSrc

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { apiUrl } from '../lib/apiBase'
 import { useProjects } from '../context/ProjectsContext'
 import { useAuth } from '../context/AuthContext'
 import './AddProjectModal.css'
@@ -21,7 +22,7 @@ function normalizeDeployedUrl(raw) {
 
 async function probeDeployUrlExists(canon, { signal } = {}) {
   const q = new URLSearchParams({ url: canon, _: String(Date.now()) })
-  const res = await fetch(`/api/projects/deploy-url-exists?${q}`, {
+  const res = await fetch(apiUrl(`/api/projects/deploy-url-exists?${q}`), {
     signal,
     cache: 'no-store',
   })

@@ -9,6 +9,7 @@ import {
   useMemo,
   useState,
 } from 'react'
+import { apiUrl } from '../lib/apiBase'
 import { useAuth } from './AuthContext'
 
 const ASSET = {
@@ -20,7 +21,7 @@ const ASSET = {
 const ProjectsContext = createContext(null)
 
 async function patchProject(id, body) {
-  const res = await fetch(`/api/projects/${encodeURIComponent(id)}`, {
+  const res = await fetch(apiUrl(`/api/projects/${encodeURIComponent(id)}`), {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -33,7 +34,7 @@ async function patchProject(id, body) {
 }
 
 async function fetchProjectsJson() {
-  const res = await fetch('/api/projects')
+  const res = await fetch(apiUrl('/api/projects'))
   if (!res.ok) {
     const err = await res.json().catch(() => ({}))
     throw new Error(err.error || res.statusText)
@@ -111,7 +112,7 @@ export function ProjectsProvider({ children }) {
       likedByUser: false,
       savedByUser: false,
     }
-    const res = await fetch('/api/projects', {
+    const res = await fetch(apiUrl('/api/projects'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(row),

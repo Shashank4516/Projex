@@ -2,11 +2,11 @@ package com.example.demo;
 
 import java.net.URI;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -18,18 +18,64 @@ public class DataSourceConfiguration {
 
 	@Bean
 	@Primary
-	public DataSource dataSource(Environment env,
-			@Value("${DATABASE_URL:}") String databaseUrl) {
-		if (databaseUrl != null && !databaseUrl.isBlank()) {
-			return fromPostgresUri(databaseUrl);
+	public DataSource dataSource(Environment env) {
+		String connectionString = resolveConnectionString(env);
+		if (connectionString != null && !connectionString.isBlank()) {
+			String trimmed = connectionString.strip();
+			if (trimmed.startsWith("jdbc:")) {
+				return fromJdbcProperties(env, trimmed);
+			}
+			return fromPostgresUri(trimmed);
 		}
 		String url = env.getProperty("spring.datasource.url");
-		if (url == null || url.isBlank()) {
-			throw new IllegalStateException(
-					"Set DATABASE_URL in .env (same as the Node API) or spring.datasource.url for local JDBC.");
+		if (url != null && !url.isBlank()) {
+			return fromJdbcProperties(env, url.strip());
 		}
+		throw new IllegalStateException(
+				"No database URL found. On Railway: add PostgreSQL, link it to this service "
+						+ "(DATABASE_URL), or set spring.datasource.url. Locally: put DATABASE_URL in .env "
+						+ "like the Node API.");
+	}
+
+	/** Postgres URI (postgresql://…) or JDBC URL from env / Railway aliases. */
+	private static String resolveConnectionString(Environment env) {
+		String[] keys = {
+				"DATABASE_URL",
+				"DATABASE_PUBLIC_URL",
+				"SPRING_DATASOURCE_URL",
+		};
+		for (String key : keys) {
+			String v = env.getProperty(key);
+			if (v != null && !v.isBlank()) {
+				return v;
+			}
+		}
+		return buildPostgresUriFromRailwayPgVars(env);
+	}
+
+	private static String buildPostgresUriFromRailwayPgVars(Environment env) {
+		String host = env.getProperty("PGHOST");
+		if (host == null || host.isBlank()) {
+			return null;
+		}
+		String port = env.getProperty("PGPORT", "5432");
+		String user = env.getProperty("PGUSER");
+		if (user == null || user.isBlank()) {
+			user = "postgres";
+		}
+		String password = env.getProperty("PGPASSWORD", "");
+		String db = env.getProperty("PGDATABASE");
+		if (db == null || db.isBlank()) {
+			db = "postgres";
+		}
+		String u = URLEncoder.encode(user, StandardCharsets.UTF_8);
+		String p = URLEncoder.encode(password, StandardCharsets.UTF_8);
+		return String.format("postgresql://%s:%s@%s:%s/%s", u, p, host, port, db);
+	}
+
+	private static DataSource fromJdbcProperties(Environment env, String jdbcUrl) {
 		var ds = new HikariDataSource();
-		ds.setJdbcUrl(url);
+		ds.setJdbcUrl(jdbcUrl);
 		ds.setUsername(env.getProperty("spring.datasource.username", ""));
 		ds.setPassword(env.getProperty("spring.datasource.password", ""));
 		String driver = env.getProperty("spring.datasource.driver-class-name");

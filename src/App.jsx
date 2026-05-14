@@ -89,9 +89,10 @@ function ExplorePage() {
 
         {projectsError ? (
           <p className="app__projects-status app__projects-status--error" role="alert">
-            {projectsError}. Start the API with{' '}
-            <code className="app__inline-code">npm run dev</code> (runs Vite and
-            the server).
+            {projectsError}. Locally run{' '}
+            <code className="app__inline-code">npm run dev</code> (Vite + API). On
+            deploy, set <code className="app__inline-code">VITE_API_URL</code> to your
+            backend origin and redeploy the frontend.
           </p>
         ) : null}
 
