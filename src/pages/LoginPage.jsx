@@ -73,7 +73,7 @@ export function LoginPage() {
         </p>
       }
     >
-      {!configured ? (
+      {!configured && import.meta.env.DEV ? (
         <p className="auth-alert auth-alert--muted" role="status">
           Copy <code>.env.example</code> to <code>.env.local</code> and add your Firebase web app keys,
           then restart the dev server.
