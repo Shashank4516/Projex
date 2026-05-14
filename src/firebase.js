@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import {
   browserLocalPersistence,
+  browserPopupRedirectResolver,
   getAuth,
   indexedDBLocalPersistence,
   initializeAuth,
@@ -41,6 +42,7 @@ export const auth = app
       try {
         return initializeAuth(app, {
           persistence: [indexedDBLocalPersistence, browserLocalPersistence],
+          popupRedirectResolver: browserPopupRedirectResolver,
         })
       } catch (e) {
         if (/** @type {{ code?: string }} */ (e)?.code === 'auth/already-initialized') {
