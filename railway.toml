@@ -1,5 +1,5 @@
-# Frontend service: Root Directory in Railway must be this folder (where Dockerfile + package.json live),
-# not `src/` — Railpack needs package.json at the build root to detect Node/Vite.
+# Frontend only: Root Directory = this folder. Spring Boot must use a separate service with
+# Root Directory = `backend/` (see backend/railway.toml + backend/Dockerfile).
 
 [build]
 dockerfilePath = "Dockerfile"

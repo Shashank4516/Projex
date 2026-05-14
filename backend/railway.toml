@@ -1,0 +1,5 @@
+# Backend API: set Railway Root Directory to the folder containing this file (`backend`),
+# not the repo root — avoids picking up the frontend Dockerfile.
+
+[build]
+dockerfilePath = "Dockerfile"
