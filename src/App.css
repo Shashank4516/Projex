@@ -28,6 +28,7 @@
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
+  isolation: isolate;
 }
 
 /* Shell fills the entire viewport — navbar floats above it */

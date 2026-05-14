@@ -10,7 +10,7 @@
   --login-text-start: #363636;
   --login-text-end: #676767;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
