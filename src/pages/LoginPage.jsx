@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth, isFirebaseConfigured } from '../firebase'
@@ -8,10 +8,18 @@ import { AuthShell } from '../components/auth/AuthShell'
 import { AuthLineField } from '../components/auth/AuthLineField'
 import { AuthInstantDivider } from '../components/auth/AuthInstantDivider'
 import { IconEnvelope, IconLock, LogoApple, LogoGoogle } from '../components/auth/AuthIcons'
+import { useAuth } from '../context/AuthContext'
 
 export function LoginPage() {
   const navigate = useNavigate()
   const configured = isFirebaseConfigured() && !!auth
+  const { user, loading } = useAuth()
+
+  useEffect(() => {
+    if (!loading && user) {
+      navigate('/', { replace: true })
+    }
+  }, [user, loading, navigate])
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

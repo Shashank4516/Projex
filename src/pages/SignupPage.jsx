@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {
   createUserWithEmailAndPassword,
@@ -6,6 +6,7 @@ import {
 } from 'firebase/auth'
 import { auth, isFirebaseConfigured } from '../firebase'
 import { signInWithGoogle } from '../auth/googlePopup'
+import { useAuth } from '../context/AuthContext'
 import { formatAuthError } from '../utils/firebaseAuthErrors'
 import { mergeUserProfileFields } from '../services/userProfileFirestore'
 import { AuthShell } from '../components/auth/AuthShell'
@@ -24,6 +25,13 @@ import { COUNTRY_OPTIONS } from '../data/countries'
 export function SignupPage() {
   const navigate = useNavigate()
   const configured = isFirebaseConfigured() && !!auth
+  const { user, loading } = useAuth()
+
+  useEffect(() => {
+    if (!loading && user) {
+      navigate('/', { replace: true })
+    }
+  }, [user, loading, navigate])
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
