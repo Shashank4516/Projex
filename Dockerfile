@@ -1,12 +1,24 @@
-# Static Vite/React frontend — Railway picks this over Railpack when present.
-# Service Root Directory must be this folder (contains package.json + vite.config.js).
+# Vite/React static site.
+#
+# Railway → set Root Directory to REPO ROOT (this folder): "/" or leave blank.
+# Do NOT use "/backend" or "/src" — those folders have no package.json.
 FROM node:22-bookworm-slim AS build
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm ci
-
+# Single copy so misconfigured roots fail with a clear message below.
 COPY . .
+
+RUN test -f package.json || (\
+	echo >&2 ""; \
+	echo >&2 "=== Railway misconfiguration ==="; \
+	echo >&2 "package.json is missing from the Docker build context."; \
+	echo >&2 "For the FRONTEND service, set Root Directory to repo root (\"/\"),"; \
+	echo >&2 "NOT \"/backend\". Use \"/backend\" only for the Spring Boot API service."; \
+	echo >&2 "================================"; \
+	echo >&2 ""; \
+	exit 1)
+
+RUN npm ci
 ENV NODE_ENV=production
 RUN npm run build
 

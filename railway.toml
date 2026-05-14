@@ -1,5 +1,5 @@
-# Frontend only: Root Directory = this folder. Spring Boot must use a separate service with
-# Root Directory = `backend/` (see backend/railway.toml + backend/Dockerfile).
+# Frontend (Vite) — Railway Root Directory MUST be repo root: "/" or empty.
+# Never "/backend" (that's for the API only).
 
 [build]
 dockerfilePath = "Dockerfile"

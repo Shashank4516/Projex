@@ -1,5 +1,6 @@
-# Spring Boot API — use with Railway Root Directory = backend (this folder).
-# JDK 21 runs Gradle; Java 25 toolchain for compile is provisioned via Foojay (settings.gradle).
+# Spring Boot API — Railway Root Directory = backend (this folder).
+# Build: JDK 21 runs Gradle; toolchain Java 25 compiles classes (Foojay in settings.gradle).
+# Run: JRE 25 — Java 21 cannot load class file version 69 (Java 25 bytecode).
 FROM eclipse-temurin:21-jdk-jammy AS build
 WORKDIR /app
 
@@ -13,7 +14,8 @@ RUN chmod +x gradlew \
 	&& test -n "$JAR" \
 	&& cp "$JAR" /app/application.jar
 
-FROM eclipse-temurin:21-jre-jammy AS runner
+# Must match bytecode produced by Gradle Java toolchain (see build.gradle: Java 25 → class file 69).
+FROM eclipse-temurin:25-jre-jammy AS runner
 WORKDIR /app
 COPY --from=build /app/application.jar /app/application.jar
 
