@@ -8,7 +8,7 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { getRedirectResult, onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
 import {
   getUserDocument,
@@ -25,36 +25,27 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     if (!auth) return undefined
 
-    let unsubscribe = () => {}
+    // Subscribe immediately — onAuthStateChanged fires as soon as Firebase
+    // resolves the session (including after popup sign-in completes).
+    const unsubscribe = onAuthStateChanged(auth, (nextUser) => {
+      setUser(nextUser)
+      setLoading(false)
 
-    void (async () => {
-      try {
-        await getRedirectResult(auth)
-      } catch {
-        // No pending redirect, cancelled flow, or stale handler params — safe to ignore.
+      if (nextUser) {
+        // Fire-and-forget: don't await so the navbar renders right away.
+        ;(async () => {
+          try {
+            await syncUserDocument(nextUser)
+            const data = await getUserDocument(nextUser.uid)
+            setProfile(data)
+          } catch (err) {
+            console.warn('[auth] profile sync failed', err)
+          }
+        })()
+      } else {
+        setProfile(null)
       }
-
-      unsubscribe = onAuthStateChanged(auth, (nextUser) => {
-        // Unblock the navbar immediately — profile fills in asynchronously below.
-        setUser(nextUser)
-        setLoading(false)
-
-        if (nextUser) {
-          // Fire-and-forget: don't await so the navbar renders right away.
-          ;(async () => {
-            try {
-              await syncUserDocument(nextUser)
-              const data = await getUserDocument(nextUser.uid)
-              setProfile(data)
-            } catch (err) {
-              console.warn('[auth] profile sync failed', err)
-            }
-          })()
-        } else {
-          setProfile(null)
-        }
-      })
-    })()
+    })
 
     return () => {
       unsubscribe()

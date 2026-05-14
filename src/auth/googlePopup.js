@@ -1,13 +1,15 @@
-import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth'
+import { GoogleAuthProvider, signInWithPopup, browserPopupRedirectResolver } from 'firebase/auth'
 
 /**
- * Full-page Google OAuth (redirect). More reliable than popups when
- * sessionStorage is partitioned or third-party cookies are restricted.
+ * Google OAuth via popup. Works reliably on localhost and on non-Firebase
+ * Hosting deployments (Railway, Vercel, etc.) where signInWithRedirect breaks
+ * due to third-party cookie restrictions and storage partitioning.
  *
  * @param {import('firebase/auth').Auth} authInst
+ * @returns {Promise<import('firebase/auth').UserCredential>}
  */
 export async function signInWithGoogle(authInst) {
   const provider = new GoogleAuthProvider()
   provider.setCustomParameters({ prompt: 'select_account' })
-  await signInWithRedirect(authInst, provider)
+  return signInWithPopup(authInst, provider, browserPopupRedirectResolver)
 }

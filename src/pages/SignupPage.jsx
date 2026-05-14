@@ -82,6 +82,7 @@ export function SignupPage() {
     }
     setBusy(true)
     try {
+      // signInWithPopup resolves directly with the user — navigate immediately.
       await signInWithGoogle(auth)
       navigate('/', { replace: true })
     } catch (err) {
