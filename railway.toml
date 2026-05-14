@@ -1,0 +1,5 @@
+# Frontend service: Root Directory in Railway must be this folder (where Dockerfile + package.json live),
+# not `src/` — Railpack needs package.json at the build root to detect Node/Vite.
+
+[build]
+dockerfilePath = "Dockerfile"

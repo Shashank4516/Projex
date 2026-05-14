@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "concurrently -k --names \"spring,vite\" -c \"magenta,cyan\" \"npm run dev:api\" \"wait-on -t 180000 -i 250 tcp:127.0.0.1:3001 && npm run dev:vite\"",
     "dev:vite": "vite",
