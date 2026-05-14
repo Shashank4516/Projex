@@ -9,7 +9,9 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(25)
+		// Java 21 matches eclipse-temurin:21-jdk in Dockerfile; avoids Foojay JDK 25
+		// download failures (e.g. HTTP 400) on Railway builders.
+		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
 

@@ -1,6 +1,5 @@
 # Spring Boot API — Railway Root Directory = backend (this folder).
-# Build: JDK 21 runs Gradle; toolchain Java 25 compiles classes (Foojay in settings.gradle).
-# Run: JRE 25 — Java 21 cannot load class file version 69 (Java 25 bytecode).
+# Build and run on Java 21 (same major version = no extra toolchain download in Docker).
 FROM eclipse-temurin:21-jdk-jammy AS build
 WORKDIR /app
 
@@ -14,8 +13,8 @@ RUN chmod +x gradlew \
 	&& test -n "$JAR" \
 	&& cp "$JAR" /app/application.jar
 
-# Must match bytecode produced by Gradle Java toolchain (see build.gradle: Java 25 → class file 69).
-FROM eclipse-temurin:25-jre-jammy AS runner
+# Must match Gradle Java toolchain in build.gradle (Java 21).
+FROM eclipse-temurin:21-jre-jammy AS runner
 WORKDIR /app
 COPY --from=build /app/application.jar /app/application.jar
 
